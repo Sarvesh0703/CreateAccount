@@ -2,7 +2,7 @@
 @media (max-width: 390px) {
     .form-box {
         /* display: block; */
-        max-width: 290px;
+        max-width: 300px;
         min-height: 340px;
         margin: 50px auto;
         padding: 30px;
@@ -12,11 +12,11 @@
     }
 
     h2 {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .form-box input {
-        width: 105%;
+        width: 100%;
         padding: 7px 12px;
         font-size: 12px;
     }
