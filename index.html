@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="form-box" id="form">
+            <h2>Create Your Account
+                <hr color="chocolate">
+            </h2>
+            <div class="input-field">
+                <label for="">Username</label>
+                <input type="text" id="uname" name="username" placeholder="Username">
+                <span id="s1" style="color: red; font-size: 12px;"></span>
+            </div>
+            <div class="input-field">
+                <label for="">Email-ID</label>
+                <input type="email" id="em" name="email" placeholder="Email Address" required>
+                <span id="s2" style="color: red; font-size: 12px;"></span>
+            </div>
+            <div class="input-field">
+                <label for="">Password</label>
+                <input type="password" id="pass1" name="password" placeholder="Password" required>
+                <span id="s3" style="color: red; font-size: 12px;"></span>
+            </div>
+            <div class="input-field">
+                <label for="">Confirm Password</label>
+                <input type="password" id="cpass2" name="password" placeholder="Confirm Password">
+                <span id="s4" style="color: red; font-size: 12px;"></span>
+            </div>
+            <!-- <input class="sub" type="submit" value="Submit"> -->
+            <div class="container">
+                <button type="submit" class="btn" id="submit">Submit</button>
+                <!-- <div class="popup" id="popup">
+                    <img src="ch.png" alt="">
+                    <h2>Thank You!</h2>
+                    <p>Your details has been successsfully submitted, Thanks!</p>
+                    <button type="button" onclick="closePopup()">OK</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="popup" id="popup">
+            <img src="ch2.png" alt="">
+            <h2>Thank You!</h2>
+            <p>Your details has been successsfully submitted, Thanks!</p>
+            <button type="button" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <script>
+
+
+        let form = document.getElementById("form");
+        let submit = document.getElementById("submit");
+
+        submit.addEventListener('click', () => {
+            if (validate()) {
+                if (!em.value.includes(char1) || !em.value.includes(char2)) {
+                    s2.innerHTML = "enter valid email id!!";
+                    return;
+                }
+
+                if (form.style.display = "block") {
+                    form.style.display = "none";
+                    openPopup();
+                    // console.log("YES");
+                }
+                // console.log("yes");
+            }
+            else {
+                console.log("no")
+            }
+        })
+        console.log(form.style.display);
+
+
+        let popup = document.getElementById("popup");
+
+        function openPopup() {
+            popup.classList.add("open-popup");
+        }
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+
+        let uname, em, pass1, cpass2, s1, s2, s3, s4;
+
+        s1 = document.getElementById("s1");
+        s2 = document.getElementById("s2");
+        s3 = document.getElementById("s3");
+        s4 = document.getElementById("s4");
+
+
+        uname = document.getElementById("uname");
+        em = document.getElementById("em");
+        pass1 = document.getElementById("pass1");
+        cpass2 = document.getElementById("cpass2");
+
+        let remove = (e) => {
+            e.innerHTML = "";
+        }
+
+        uname.onfocus = () => {
+            remove(s1);
+        }
+        em.onfocus = () => {
+            remove(s2);
+        }
+        pass1.onfocus = () => {
+            remove(s3);
+        }
+        cpass2.onfocus = () => {
+            remove(s4);
+        }
+
+        let char1 = '@';
+        let char2 = '.';
+
+        function validate() {
+
+            let z = false;
+
+            if (uname.value == "") {
+                s1.innerHTML = "Please enter username!";
+                z = false;
+            }
+            else if (em.value == "") {
+                s2.innerHTML = "Enter valid email!";
+                z = false;
+            }
+            // else if(em.value.includes(char1)){
+            //     console.log("yes");
+            //     // s2.innerHTML = "Enter valid email!!";
+            // }
+            else if (pass1.value == "" || cpass2.value == "") {
+                s3.innerHTML = "Please enter password!";
+                s4.innerHTML = "Please enter password!";
+                z = false;
+            }
+            else if (pass1.value !== cpass2.value) {
+                s4.innerHTML = "Password must be same!";
+                z = false;
+            }
+            else {
+                z = true;
+            }
+
+            return z;
+
+        }
+    </script>
+</body>
+
+</html>
