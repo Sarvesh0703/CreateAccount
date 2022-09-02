@@ -2,7 +2,7 @@
 @media (max-width: 390px) {
     .form-box {
         /* display: block; */
-        max-width: 310px;
+        max-width: 320px;
         min-height: 340px;
         margin: 50px auto;
         padding: 30px;
